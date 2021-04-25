@@ -13,4 +13,6 @@ routes.post("/settings",settinController.create);
 routes.post("/users",userController.create);
 routes.post("/messages",messagesController.create);
 routes.get("/messages/:id",messagesController.showByUser);
+routes.get("/settings/:username",settinController.findByUsername);
+routes.put("/settings/:username",settinController.update);
 export { routes };

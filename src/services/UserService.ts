@@ -10,7 +10,7 @@ class UserService {
   constructor(){
       this.userRepository = getCustomRepository(UsersRepository)
   }
-  async create({ email }: IUserCreate) {
+  async create( email:string) {
 
     const userExists = await this.userRepository.findOne({ email });
 
@@ -18,16 +18,20 @@ class UserService {
       return userExists;
     }
 
-    const user = this.userRepository.create({ email });
+    const user =  this.userRepository.create({ email });
 
     await this.userRepository.save(user);
 
     return user;
   }
+
+
   async findByEmail(email: string) {
     const user = await this.userRepository.findOne({ email });
   
     return user;
   }
+
+
 }
 export { UserService };
